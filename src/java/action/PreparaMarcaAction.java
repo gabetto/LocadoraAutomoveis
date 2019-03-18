@@ -27,7 +27,7 @@ public class PreparaMarcaAction implements Action{
         try {
             ArrayList<Marca> marcas = MarcaDAO.getInstance().getMarcas();
             request.setAttribute("marcas", marcas);
-            RequestDispatcher view = request.getRequestDispatcher("cadastraMarca.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("marcaPages/marca.jsp");
             view.forward(request, response);
         } catch (SQLException | ClassNotFoundException ex) {
             System.out.println(ex);

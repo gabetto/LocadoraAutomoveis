@@ -53,7 +53,7 @@ public class MarcaDAO {
         try {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            ResultSet rs = st.executeQuery("select * from marca where nome =" + nome + "");
+            ResultSet rs = st.executeQuery("select * from marca where nome ='" + nome + "';");
             rs.first();
             marca = new Marca(rs.getInt("id"), rs.getString("nome"));
         } catch (SQLException e) {
@@ -113,7 +113,7 @@ public class MarcaDAO {
         try {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            ResultSet rs = st.executeQuery("delete from marca where id =" + id + "");
+            st.executeUpdate("delete from marca where id =" + id + "");
         } catch (SQLException e) {
             throw e;
         } finally {
@@ -128,7 +128,7 @@ public class MarcaDAO {
         try {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            ResultSet rs = st.executeQuery("delete from marca where nome =" + nome + "");
+            st.executeUpdate("delete from marca where nome ='" + nome + "';");
         } catch (SQLException e) {
             throw e;
         } finally {

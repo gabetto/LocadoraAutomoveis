@@ -28,13 +28,13 @@ public class GravarModeloAction implements Action{
     public void execute(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         
-        int id = Integer.parseInt(request.getParameter("id"));
+        //int id = Integer.parseInt(request.getParameter("id"));
         int marca = Integer.parseInt(request.getParameter("optMarca"));
         String nome = request.getParameter("textNome");
         int categoria = Integer.parseInt(request.getParameter("optCategoria"));
         
         try {
-            Modelo modelo = new Modelo(id, MarcaDAO.getInstance().getMarca(marca), nome, CategoriaDAO.getInstance().getCategoria(categoria) );
+            Modelo modelo = new Modelo(MarcaDAO.getInstance().getMarca(marca), nome, CategoriaDAO.getInstance().getCategoria(categoria) );
             ModeloDAO.getInstance().save(modelo);
             response.sendRedirect("sucesso.jsp");
         } catch (SQLException ex) {

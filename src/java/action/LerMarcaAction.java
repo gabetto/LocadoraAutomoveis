@@ -5,6 +5,7 @@
  */
 package action;
 
+import controller.Action;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -20,16 +21,17 @@ import persistence.MarcaDAO;
  *
  * @author mathe
  */
-public class LerMarcaAction {
+public class LerMarcaAction implements Action {
+    
     public void execute(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
-        String nome = request.getParameter("nome");
+        String nome = request.getParameter("textNome");
 
         try {
             Marca marca = MarcaDAO.getInstance().getMarca(nome);
 
             request.setAttribute("marca", marca);
-            RequestDispatcher view = request.getRequestDispatcher("/exibirMarca.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("marcaPages/exibirMarca.jsp");
             view.forward(request, response);
         } catch (SQLException ex) {
             response.sendRedirect("erro.jsp");

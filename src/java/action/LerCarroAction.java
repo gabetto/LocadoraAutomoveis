@@ -25,7 +25,7 @@ public class LerCarroAction implements Action {
 
     public void execute(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
-        String placa = request.getParameter("placa");
+        String placa = request.getParameter("textPlaca");
 
         try {
             Carro carro = CarroDAO.getInstance().getCarro(placa);

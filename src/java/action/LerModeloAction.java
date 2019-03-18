@@ -23,13 +23,13 @@ import persistence.ModeloDAO;
 public class LerModeloAction {
     public void execute(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
-        String nome = request.getParameter("nome");
+        String nome = request.getParameter("textNome");
 
         try {
             Modelo modelo = ModeloDAO.getInstance().getModelo(nome);
 
             request.setAttribute("modelo", modelo);
-            RequestDispatcher view = request.getRequestDispatcher("/exibirModelo.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("modeloPages/exibirModelo.jsp");
             view.forward(request, response);
         } catch (SQLException ex) {
             response.sendRedirect("erro.jsp");

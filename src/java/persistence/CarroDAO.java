@@ -151,7 +151,7 @@ public class CarroDAO {
         try {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            ResultSet rs = st.executeQuery("delete from carro where placa =" + placa + "");
+            st.executeUpdate("delete from carro where placa =" + placa + "");
         } catch (SQLException e) {
             throw e;
         } finally {

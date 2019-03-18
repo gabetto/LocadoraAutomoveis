@@ -12,8 +12,12 @@ and open the template in the editor.
   </head>
   <body>
     <h1>Locadora de automoveis</h1>
-
     <ul>
+      <li>
+        <form action="FrontController?action=PreparaMarca" method="post">
+          <input type="submit" value="Marca" />
+        </form>
+      </li>
       <li>
         <form action="FrontController?action=PreparaCategoria" method="post">
           <input type="submit" value="Categoria" />

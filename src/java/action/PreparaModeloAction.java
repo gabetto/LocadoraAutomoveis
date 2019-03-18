@@ -27,7 +27,7 @@ public class PreparaModeloAction implements Action {
         try {
             ArrayList<Modelo> modelos = ModeloDAO.getInstance().getModelos();
             request.setAttribute("modelos", modelos);
-            RequestDispatcher view = request.getRequestDispatcher("cadastraModelo.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("modeloPages/modelo.jsp");
             view.forward(request, response);
         } catch (SQLException | ClassNotFoundException ex) {
             System.out.println(ex);

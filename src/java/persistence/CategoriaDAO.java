@@ -23,7 +23,7 @@ public class CategoriaDAO {
     public static CategoriaDAO getInstance() {
         return instance;
     }
-    
+
     public ArrayList<Categoria> getCategorias() throws ClassNotFoundException, SQLException {
         ArrayList<Categoria> categorias = new ArrayList<Categoria>();
         Connection conn = null;
@@ -46,7 +46,7 @@ public class CategoriaDAO {
         return categorias;
 
     }
-    
+
     public Categoria getCategoria(int id) throws ClassNotFoundException, SQLException {
         Categoria categoria = null;
         Connection conn = null;
@@ -67,7 +67,7 @@ public class CategoriaDAO {
         return categoria;
 
     }
-    
+
     public Categoria getCategoria(String nome) throws ClassNotFoundException, SQLException {
         Categoria categoria = null;
         Connection conn = null;
@@ -91,13 +91,13 @@ public class CategoriaDAO {
 
     public void update(Categoria categoria) throws ClassNotFoundException, SQLException {
 
-       Connection conn = null;
+        Connection conn = null;
         Statement st = null;
 
         try {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            st.execute("update categoria set nome = '"+ categoria.getNome() + "' where id = " + categoria.getId() + ";");
+            st.execute("update categoria set nome = '" + categoria.getNome() + "' where id = " + categoria.getId() + ";");
 
         } catch (SQLException e) {
             throw e;
@@ -113,15 +113,15 @@ public class CategoriaDAO {
         try {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            ResultSet rs = st.executeQuery("delete from categoria where id =" + id + "");
+            st.executeUpdate("delete from categoria where id =" + id + "");
         } catch (SQLException e) {
             throw e;
         } finally {
             closeResources(conn, st);
         }
     }
-    
-     public void delete(String nome) throws ClassNotFoundException, SQLException {
+
+    public void delete(String nome) throws ClassNotFoundException, SQLException {
         Connection conn = null;
         Statement st = null;
 

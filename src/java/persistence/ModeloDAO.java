@@ -128,7 +128,7 @@ public class ModeloDAO {
         try {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            ResultSet rs = st.executeQuery("delete from modelo where nome =" + nome + "");
+           st.executeUpdate("delete from modelo where nome =" + nome + "");
         } catch (SQLException e) {
             throw e;
         } finally {

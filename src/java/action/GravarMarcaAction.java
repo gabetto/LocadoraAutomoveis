@@ -27,11 +27,11 @@ public class GravarMarcaAction implements Action {
     public void execute(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
 
-        int id = Integer.parseInt(request.getParameter("id"));
+        //int id = Integer.parseInt(request.getParameter("id"));
         String nome = request.getParameter("textNome");
 
         try {
-            Marca marca = new Marca(id, nome);
+            Marca marca = new Marca(nome);
             MarcaDAO.getInstance().save(marca);
             response.sendRedirect("sucesso.jsp");
         } catch (SQLException ex) {

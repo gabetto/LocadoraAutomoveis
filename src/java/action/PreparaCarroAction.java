@@ -28,7 +28,7 @@ public class PreparaCarroAction implements Action {
         try {
             ArrayList<Carro> carros = CarroDAO.getInstance().getCarros();
             request.setAttribute("carros", carros);
-            RequestDispatcher view = request.getRequestDispatcher("cadastraCarro.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("carroPages/carro.jsp");
             view.forward(request, response);
         } catch (SQLException | ClassNotFoundException ex) {
             System.out.println(ex);
