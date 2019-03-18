@@ -76,7 +76,7 @@ public class CategoriaDAO {
         try {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            ResultSet rs = st.executeQuery("select * from categoria where nome =" + nome + "");
+            ResultSet rs = st.executeQuery("select * from categoria where nome ='" + nome + "';");
             rs.first();
             categoria = new Categoria(rs.getInt("id"), rs.getString("nome"));
         } catch (SQLException e) {
@@ -128,7 +128,7 @@ public class CategoriaDAO {
         try {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            ResultSet rs = st.executeQuery("delete from categoria where nome =" + nome + "");
+            st.executeUpdate("delete from categoria where nome ='" + nome + "';");
         } catch (SQLException e) {
             throw e;
         } finally {

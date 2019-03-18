@@ -27,7 +27,7 @@ public class PreparaCategoriaAction implements Action{
         try {
             ArrayList<Categoria> categorias = CategoriaDAO.getInstance().getCategorias();
             request.setAttribute("categorias", categorias);
-            RequestDispatcher view = request.getRequestDispatcher("cadastraCategoria.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("categoriaPages/categoria.jsp");
             view.forward(request, response);
         } catch (SQLException | ClassNotFoundException ex) {
             System.out.println(ex);

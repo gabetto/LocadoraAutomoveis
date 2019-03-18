@@ -26,11 +26,12 @@ public class GravarCategoriaAction implements Action{
     public void execute(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         
-        int id = Integer.parseInt(request.getParameter("id"));
+        //int id = Integer.parseInt(request.getParameter("id"));
+        //o banco insere o id
         String nome = request.getParameter("textNome");
         
         try {
-            Categoria categoria = new Categoria(id, nome);
+            Categoria categoria = new Categoria(nome);
             CategoriaDAO.getInstance().save(categoria);
             response.sendRedirect("sucesso.jsp");
         } catch (SQLException ex) {

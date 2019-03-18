@@ -23,15 +23,16 @@ import persistence.CategoriaDAO;
  */
 public class LerCategoriaAction implements Action {
 
+    @Override
     public void execute(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
-        String nome = request.getParameter("nome");
+        String nome = request.getParameter("textNome");
 
         try {
             Categoria categoria = CategoriaDAO.getInstance().getCategoria(nome);
 
             request.setAttribute("categoria", categoria);
-            RequestDispatcher view = request.getRequestDispatcher("/exibirCategoria.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("categoriaPages/exibirCategoria.jsp");
             view.forward(request, response);
         } catch (SQLException ex) {
             response.sendRedirect("erro.jsp");
