@@ -40,7 +40,7 @@ public class ModeloDAO {
             while (rs.next()) {
                 Marca marca = new Marca(rs.getInt("marca.id"), rs.getString("marca.nome"));
                 Categoria categoria = new Categoria(rs.getInt("categoria.id"), rs.getString("categoria.nome"));
-                Modelo modelo = new Modelo(marca, rs.getString("modelo.nome"), categoria);
+                Modelo modelo = new Modelo(rs.getInt("modelo.id"), marca, rs.getString("modelo.nome"), categoria);
                 modelos.add(modelo);
             }
         } catch (SQLException e) {
@@ -62,12 +62,14 @@ public class ModeloDAO {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
             ResultSet rs = st.executeQuery("select modelo.*, marca.*, categoria.* from modelo "
-                    + "INNER JOIN categoria ON modelo.categoria_id = categoria.id "
-                    + "INNER JOIN marca ON modelo.marca_id = marca.id; WHERE carro.id = " + id + ";");
+                    + "INNER JOIN categoria ON modelo.id_categoria = categoria.id "
+                    + "INNER JOIN marca ON modelo.id_marca = marca.id WHERE modelo.id = '" + id + "';");
             rs.first();
+            int idd = rs.getInt("marca.id");
+            String nome = rs.getString("marca.nome");
             Marca marca = new Marca(rs.getInt("marca.id"), rs.getString("marca.nome"));
             Categoria categoria = new Categoria(rs.getInt("categoria.id"), rs.getString("categoria.nome"));
-            modelo = new Modelo(marca, rs.getString("modelo.nome"), categoria);
+            modelo = new Modelo(rs.getInt("modelo.id"), marca, rs.getString("modelo.nome"), categoria);
         } catch (SQLException e) {
             throw e;
         } finally {
@@ -91,7 +93,7 @@ public class ModeloDAO {
             rs.first();
             Marca marca = new Marca(rs.getInt("marca.id"), rs.getString("marca.nome"));
             Categoria categoria = new Categoria(rs.getInt("categoria.id"), rs.getString("categoria.nome"));
-            modelo = new Modelo(marca, rs.getString("modelo.nome"), categoria);
+            modelo = new Modelo(rs.getInt("modelo.id"), marca, rs.getString("modelo.nome"), categoria);
         } catch (SQLException e) {
             throw e;
         } finally {

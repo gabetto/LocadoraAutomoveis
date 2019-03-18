@@ -29,6 +29,12 @@ public class Carro {
         this.placa = placa;
         this.modelo = modelo;
     }
+    
+    public Carro(Modelo modelo, String placa) {
+        this.estado = new CarroEstadoDisponivel();
+        this.placa = placa;
+        this.modelo = modelo;
+    }
 
     public int getId() {
         return id;

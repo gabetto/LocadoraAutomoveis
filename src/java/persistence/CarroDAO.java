@@ -38,13 +38,13 @@ public class CarroDAO {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
             ResultSet rs = st.executeQuery("select carro.*, modelo.*, marca.*, categoria.* from carro "
-                    + "INNER JOIN modelo ON carro.modelo_id = modelo.id "
-                    + "INNER JOIN categoria ON modelo.categoria_id = categoria.id "
-                    + "INNER JOIN marca ON modelo.marca_id = marca.id;");
+                    + "INNER JOIN modelo ON carro.id_modelo = modelo.id "
+                    + "INNER JOIN categoria ON modelo.id_categoria = categoria.id "
+                    + "INNER JOIN marca ON modelo.id_marca = marca.id;");
             while (rs.next()) {
                 Marca marca = new Marca(rs.getInt("marca.id"), rs.getString("marca.nome"));
                 Categoria categoria = new Categoria(rs.getInt("categoria.id"), rs.getString("categoria.nome"));
-                Modelo modelo = new Modelo(marca, rs.getString("modelo.nome"), categoria);
+                Modelo modelo = new Modelo(rs.getInt("modelo.id"),marca, rs.getString("modelo.nome"), categoria);
                 Carro carro = new Carro(rs.getInt("carro.id"), modelo, rs.getString("carro.placa"), StateFactory.create(rs.getString("carro.estado")));
                 carros.add(carro);
             }
@@ -67,13 +67,13 @@ public class CarroDAO {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
             ResultSet rs = st.executeQuery("select carro.*, modelo.*, marca.* from carro "
-                    + "INNER JOIN modelo ON carro.modelo_id = modelo.id "
-                    + "INNER JOIN categoria ON modelo.categoria_id = categoria.id "
-                    + "INNER JOIN marca ON modelo.marca_id = marca.id WHERE carro.id = " + id + ";");
+                    + "INNER JOIN modelo ON carro.id_modelo = modelo.id "
+                    + "INNER JOIN categoria ON modelo.id_categoria = categoria.id "
+                    + "INNER JOIN marca ON modelo.id_marca = marca.id WHERE carro.id = " + id + ";");
             rs.first();
             Marca marca = new Marca(rs.getInt("marca.id"), rs.getString("marca.nome"));
             Categoria categoria = new Categoria(rs.getInt("categoria.id"), rs.getString("categoria.nome"));
-            Modelo modelo = new Modelo(marca, rs.getString("modelo.nome"), categoria);
+            Modelo modelo = new Modelo(rs.getInt("modelo.id"), marca, rs.getString("modelo.nome"), categoria);
             carro = new Carro(rs.getInt("carro.id"), modelo, rs.getString("carro.placa"), StateFactory.create(rs.getString("carro.estado")));
         } catch (SQLException e) {
             throw e;
@@ -92,14 +92,19 @@ public class CarroDAO {
         try {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
+            //funciona no phpmyadmin mas aqui não ???
+            //select carro.*, modelo.*, marca.* from carro 
+            //INNER JOIN modelo ON carro.id_modelo = modelo.id 
+            //INNER JOIN categoria ON modelo.id_categoria = categoria.id 
+            //INNER JOIN marca ON modelo.id_marca = marca.id WHERE carro.placa = 'asd1234';
             ResultSet rs = st.executeQuery("select carro.*, modelo.*, marca.* from carro "
                     + "INNER JOIN modelo ON carro.id_modelo = modelo.id "
                     + "INNER JOIN categoria ON modelo.id_categoria = categoria.id "
-                    + "INNER JOIN marca ON modelo.id_marca = marca.id WHERE carro.placa = " + placa + ";");
+                    + "INNER JOIN marca ON modelo.id_marca = marca.id WHERE carro.placa = '" + placa + "';");
             rs.first();
             Marca marca = new Marca(rs.getInt("marca.id"), rs.getString("marca.nome"));
             Categoria categoria = new Categoria(rs.getInt("categoria.id"), rs.getString("categoria.nome"));
-            Modelo modelo = new Modelo(marca, rs.getString("modelo.nome"), categoria);
+            Modelo modelo = new Modelo(rs.getInt("modelo.id"), marca, rs.getString("modelo.nome"), categoria);
             carro = new Carro(rs.getInt("carro.id"), modelo, rs.getString("carro.placa"), StateFactory.create(rs.getString("carro.estado")));
         } catch (SQLException e) {
             throw e;
@@ -151,7 +156,7 @@ public class CarroDAO {
         try {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            st.executeUpdate("delete from carro where placa =" + placa + "");
+            st.executeUpdate("delete from carro where placa ='" + placa + "';");
         } catch (SQLException e) {
             throw e;
         } finally {

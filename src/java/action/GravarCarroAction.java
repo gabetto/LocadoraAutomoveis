@@ -31,10 +31,11 @@ public class GravarCarroAction implements Action{
         //int id = Integer.parseInt(request.getParameter("id"));
         int modelo = Integer.parseInt(request.getParameter("optModelo"));
         String placa = request.getParameter("textPlaca");
-        String estado = request.getParameter("optEstado");
+        //estado inicia disponivel
+        //String estado = request.getParameter("optEstado");
         
         try {
-            Carro carro = new Carro(ModeloDAO.getInstance().getModelo(modelo), placa, StateFactory.create(estado));
+            Carro carro = new Carro(ModeloDAO.getInstance().getModelo(modelo), placa);
             CarroDAO.getInstance().save(carro);
             response.sendRedirect("sucesso.jsp");
         } catch (SQLException ex) {
