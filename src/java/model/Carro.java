@@ -15,6 +15,7 @@ public class Carro {
     private Modelo modelo;
     private String placa;
     private CarroEstado estado;
+    
 
     public Carro(int id, Modelo modelo, String placa, CarroEstado estado) {
         this.id = id;

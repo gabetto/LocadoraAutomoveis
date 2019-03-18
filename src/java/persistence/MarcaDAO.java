@@ -45,6 +45,27 @@ public class MarcaDAO {
 
     }
 
+    public Marca getMarca(String nome) throws ClassNotFoundException, SQLException {
+        Marca marca = null;
+        Connection conn = null;
+        Statement st = null;
+
+        try {
+            conn = DatabaseLocator.getInstance().getConnection();
+            st = conn.createStatement();
+            ResultSet rs = st.executeQuery("select * from marca where nome =" + nome + "");
+            rs.first();
+            marca = new Marca(rs.getInt("id"), rs.getString("nome"));
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            closeResources(conn, st);
+        }
+
+        return marca;
+
+    }
+
     public ArrayList<Marca> getMarcas() throws ClassNotFoundException, SQLException {
         ArrayList<Marca> marcas = new ArrayList<Marca>();
         Connection conn = null;
@@ -93,6 +114,21 @@ public class MarcaDAO {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
             ResultSet rs = st.executeQuery("delete from marca where id =" + id + "");
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            closeResources(conn, st);
+        }
+    }
+
+    public void delete(String nome) throws ClassNotFoundException, SQLException {
+        Connection conn = null;
+        Statement st = null;
+
+        try {
+            conn = DatabaseLocator.getInstance().getConnection();
+            st = conn.createStatement();
+            ResultSet rs = st.executeQuery("delete from marca where nome =" + nome + "");
         } catch (SQLException e) {
             throw e;
         } finally {

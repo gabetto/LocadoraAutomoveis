@@ -76,6 +76,31 @@ public class ModeloDAO {
         return modelo;
 
     }
+    
+    public Modelo getModelo(String nome) throws ClassNotFoundException, SQLException {
+        Connection conn = null;
+        Statement st = null;
+        Modelo modelo = null;
+
+        try {
+            conn = DatabaseLocator.getInstance().getConnection();
+            st = conn.createStatement();
+            ResultSet rs = st.executeQuery("select modelo.*, marca.*, categoria.* from modelo "
+                    + "INNER JOIN categoria ON modelo.categoria_id = categoria.id "
+                    + "INNER JOIN marca ON modelo.marca_id = marca.id; WHERE modelo.nome = " + nome + ";");
+            rs.first();
+            Marca marca = new Marca(rs.getInt("marca.id"), rs.getString("marca.nome"));
+            Categoria categoria = new Categoria(rs.getInt("categoria.id"), rs.getString("categoria.nome"));
+            modelo = new Modelo(marca, rs.getString("modelo.nome"), categoria);
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            closeResources(conn, st);
+        }
+        return modelo;
+
+    }
+
 
     public void update(Modelo modelo) throws ClassNotFoundException, SQLException {
 
@@ -96,14 +121,14 @@ public class ModeloDAO {
         }
     }
 
-    public void delete(int id) throws ClassNotFoundException, SQLException {
+    public void delete(String nome) throws ClassNotFoundException, SQLException {
         Connection conn = null;
         Statement st = null;
 
         try {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            ResultSet rs = st.executeQuery("delete from modelo where id =" + id + "");
+            ResultSet rs = st.executeQuery("delete from modelo where nome =" + nome + "");
         } catch (SQLException e) {
             throw e;
         } finally {

@@ -67,6 +67,27 @@ public class CategoriaDAO {
         return categoria;
 
     }
+    
+    public Categoria getCategoria(String nome) throws ClassNotFoundException, SQLException {
+        Categoria categoria = null;
+        Connection conn = null;
+        Statement st = null;
+
+        try {
+            conn = DatabaseLocator.getInstance().getConnection();
+            st = conn.createStatement();
+            ResultSet rs = st.executeQuery("select * from categoria where nome =" + nome + "");
+            rs.first();
+            categoria = new Categoria(rs.getInt("id"), rs.getString("nome"));
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            closeResources(conn, st);
+        }
+
+        return categoria;
+
+    }
 
     public void update(Categoria categoria) throws ClassNotFoundException, SQLException {
 
@@ -93,6 +114,21 @@ public class CategoriaDAO {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
             ResultSet rs = st.executeQuery("delete from categoria where id =" + id + "");
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            closeResources(conn, st);
+        }
+    }
+    
+     public void delete(String nome) throws ClassNotFoundException, SQLException {
+        Connection conn = null;
+        Statement st = null;
+
+        try {
+            conn = DatabaseLocator.getInstance().getConnection();
+            st = conn.createStatement();
+            ResultSet rs = st.executeQuery("delete from categoria where nome =" + nome + "");
         } catch (SQLException e) {
             throw e;
         } finally {

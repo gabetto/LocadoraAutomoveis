@@ -82,7 +82,32 @@ public class CarroDAO {
         }
 
         return carro;
+    }
+    
+    public Carro getCarro(String placa) throws ClassNotFoundException, SQLException {
+        Connection conn = null;
+        Statement st = null;
+        Carro carro = null;
 
+        try {
+            conn = DatabaseLocator.getInstance().getConnection();
+            st = conn.createStatement();
+            ResultSet rs = st.executeQuery("select carro.*, modelo.*, marca.* from carro "
+                    + "INNER JOIN modelo ON carro.id_modelo = modelo.id "
+                    + "INNER JOIN categoria ON modelo.id_categoria = categoria.id "
+                    + "INNER JOIN marca ON modelo.id_marca = marca.id WHERE carro.placa = " + placa + ";");
+            rs.first();
+            Marca marca = new Marca(rs.getInt("marca.id"), rs.getString("marca.nome"));
+            Categoria categoria = new Categoria(rs.getInt("categoria.id"), rs.getString("categoria.nome"));
+            Modelo modelo = new Modelo(marca, rs.getString("modelo.nome"), categoria);
+            carro = new Carro(rs.getInt("carro.id"), modelo, rs.getString("carro.placa"), StateFactory.create(rs.getString("carro.estado")));
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            closeResources(conn, st);
+        }
+
+        return carro;
     }
 
     public void update(Carro carro) throws ClassNotFoundException, SQLException {
@@ -112,6 +137,21 @@ public class CarroDAO {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
             ResultSet rs = st.executeQuery("delete from carro where id =" + id + "");
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            closeResources(conn, st);
+        }
+    }
+    
+    public void delete(String placa) throws ClassNotFoundException, SQLException {
+        Connection conn = null;
+        Statement st = null;
+
+        try {
+            conn = DatabaseLocator.getInstance().getConnection();
+            st = conn.createStatement();
+            ResultSet rs = st.executeQuery("delete from carro where placa =" + placa + "");
         } catch (SQLException e) {
             throw e;
         } finally {
