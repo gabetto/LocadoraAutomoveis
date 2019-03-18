@@ -23,6 +23,11 @@ and open the template in the editor.
           <input type="submit" value="Categoria" />
         </form>
       </li>
+      <li>
+        <form action="FrontController?action=PreparaModelo" method="post">
+          <input type="submit" value="Modelo" />
+        </form>
+      </li>
     </ul>
   </body>
 </html>

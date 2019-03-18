@@ -34,7 +34,7 @@ public class GravarModeloAction implements Action{
         int categoria = Integer.parseInt(request.getParameter("optCategoria"));
         
         try {
-            Modelo modelo = new Modelo(MarcaDAO.getInstance().getMarca(marca), nome, CategoriaDAO.getInstance().getCategoria(categoria) );
+            Modelo modelo = new Modelo(MarcaDAO.getInstance().getMarca(marca), nome, CategoriaDAO.getInstance().getCategoria(categoria));
             ModeloDAO.getInstance().save(modelo);
             response.sendRedirect("sucesso.jsp");
         } catch (SQLException ex) {

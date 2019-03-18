@@ -35,8 +35,8 @@ public class ModeloDAO {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
             ResultSet rs = st.executeQuery("select modelo.*, marca.*, categoria.* from modelo "
-                    + "INNER JOIN categoria ON modelo.categoria_id = categoria.id "
-                    + "INNER JOIN marca ON modelo.marca_id = marca.id;");
+                    + "INNER JOIN categoria ON modelo.id_categoria = categoria.id "
+                    + "INNER JOIN marca ON modelo.id_marca = marca.id;");
             while (rs.next()) {
                 Marca marca = new Marca(rs.getInt("marca.id"), rs.getString("marca.nome"));
                 Categoria categoria = new Categoria(rs.getInt("categoria.id"), rs.getString("categoria.nome"));
@@ -86,8 +86,8 @@ public class ModeloDAO {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
             ResultSet rs = st.executeQuery("select modelo.*, marca.*, categoria.* from modelo "
-                    + "INNER JOIN categoria ON modelo.categoria_id = categoria.id "
-                    + "INNER JOIN marca ON modelo.marca_id = marca.id; WHERE modelo.nome = " + nome + ";");
+                    + "INNER JOIN categoria ON modelo.id_categoria = categoria.id "
+                    + "INNER JOIN marca ON modelo.id_marca = marca.id WHERE modelo.nome = '" + nome + "';");
             rs.first();
             Marca marca = new Marca(rs.getInt("marca.id"), rs.getString("marca.nome"));
             Categoria categoria = new Categoria(rs.getInt("categoria.id"), rs.getString("categoria.nome"));
@@ -128,7 +128,7 @@ public class ModeloDAO {
         try {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-           st.executeUpdate("delete from modelo where nome =" + nome + "");
+           st.executeUpdate("delete from modelo where nome ='" + nome + "';");
         } catch (SQLException e) {
             throw e;
         } finally {
@@ -143,7 +143,7 @@ public class ModeloDAO {
         try {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            st.execute("insert into carro (id_marca, id_marca, nome)"
+            st.execute("insert into modelo (id_marca, id_categoria, nome)"
                     + " values (" + modelo.getMarca().getId() + ", " + modelo.getCategoria().getId() + ", "
                     + "'" + modelo.getNome() + "');");
         } catch (SQLException e) {

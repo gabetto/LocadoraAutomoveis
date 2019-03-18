@@ -5,6 +5,7 @@
  */
 package action;
 
+import controller.Action;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -20,7 +21,7 @@ import persistence.ModeloDAO;
  *
  * @author mathe
  */
-public class LerModeloAction {
+public class LerModeloAction implements Action{
     public void execute(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         String nome = request.getParameter("textNome");
