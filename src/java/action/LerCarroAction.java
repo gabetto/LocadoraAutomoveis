@@ -31,7 +31,7 @@ public class LerCarroAction implements Action {
             Carro carro = CarroDAO.getInstance().getCarro(placa);
 
             request.setAttribute("carro", carro);
-            RequestDispatcher view = request.getRequestDispatcher("/exibirCarro.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("carroPages/exibirCarro.jsp");
             view.forward(request, response);
         } catch (SQLException ex) {
             response.sendRedirect("erro.jsp");
