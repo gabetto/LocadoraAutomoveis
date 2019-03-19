@@ -11,6 +11,7 @@
         <table>
             <tr><td>Id: </td><td><input value="${carro.id}" type="text" disabled="true"/></td></tr>
             <tr><td>Nome: </td><td><input value="${carro.placa}" type="text" disabled="true"/></td></tr>
+            <tr><td>Estado: </td><td><input value="${carro.estado.toString()}" type="text" disabled="true"/></td></tr>
         </table>
         <a href="index.jsp">Inicial</a>
     </body>

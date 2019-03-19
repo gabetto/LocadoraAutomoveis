@@ -28,4 +28,9 @@ public class CarroEstadoDisponivel implements CarroEstado{
         return true;
     }
     
+    @Override
+    public String toString(){
+        return "Disponivel";
+    }
+    
 }
