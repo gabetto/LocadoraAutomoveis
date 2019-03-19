@@ -6,11 +6,12 @@
     <title>Procurar Marca</title>
   </head>
   <body>
-    <h1>Procurar Marca</h1>
+     <%@ include file="../master/menu.jsp" %>
+    <h2>Procurar Marca</h2>
     <form action="../FrontController?action=LerMarca" method="post">
       <table>
         <tr>
-          <td>Entre com o nome da marca</td>
+          <td>Informe o nome da marca</td>
           <td><input type="text" name="textNome"/></td>
         </tr>
         <tr>
@@ -18,6 +19,5 @@
         </tr>
       </table>
     </form>
-    <a href="../index.jsp">Inicial</a>
   </body>
 </html>

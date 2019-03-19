@@ -7,34 +7,28 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     <title>Cadastra Carro</title>
   </head>
   <body>
-    <h2>CADASTRAR</h2>
+    <%@ include file="../master/menu.jsp" %>
+    <h2>Cadastrar</h2>
     <form action="./FrontController?action=GravarCarro" method="post">
       <table>
-        <!--
         <tr>
-          <td>Entre com seu id</td>
-          <td><input type="text" name="id"/></td>
-        </tr>
-        -->
-        <tr>
-          <td>Entre com a placa</td>
-          <td><input type="text" name="textPlaca" /></td>
-        </tr>
-        <tr>
-          <td>Escolha o modelo</td>
+          <td>Modelo do veículo</td>
           <td>
               <select name="optModelo">
                 <c:forEach items="${modelos}" var="modelo">
-                    <option value="${modelo.id}">${modelo.nome}</option>  
+                    <option value="${modelo.id}">${modelo.marca.nome} ${modelo.nome}</option>  
                 </c:forEach>
             </select>
           </td>
+        </tr>
+        <tr>
+          <td>Placa</td>
+          <td><input type="text" name="textPlaca" /></td>
         </tr>
           <tr>
           <td><input type="submit" value="Cadastrar"/></td>
         </tr>
       </table>
     </form>
-    <a href="index.jsp">Inicial</a>
   </body>
 </html>

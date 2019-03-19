@@ -7,17 +7,12 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     <title>Cadastra Marca</title>
   </head>
   <body>
-    <h2>CADASTRAR</h2>
+    <%@ include file="../master/menu.jsp" %>
+    <h2>Cadastrar</h2>
     <form action="../FrontController?action=GravarMarca" method="post">
       <table>
-        <!--
         <tr>
-          <td>Entre com seu id</td>
-          <td><input type="text" name="id"/></td>
-        </tr>
-        -->
-        <tr>
-          <td>Entre com o nome</td>
+          <td>Informe o nome</td>
           <td><input type="text" name="textNome" /></td>
         </tr>
         <tr>
@@ -25,6 +20,5 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
         </tr>
       </table>
     </form>
-    <a href="index.jsp">Inicial</a>
   </body>
 </html>

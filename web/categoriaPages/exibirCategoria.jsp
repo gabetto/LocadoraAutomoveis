@@ -7,11 +7,11 @@
         <title>Categoria</title>
     </head>
     <body>
+        <%@ include file="../master/menu.jsp" %>
         <h1>Categoria lido com sucesso!</h1>
         <table>
             <tr><td>Id: </td><td><input value="${categoria.id}" type="text" disabled="true"/></td></tr>
             <tr><td>Nome: </td><td><input value="${categoria.nome}" type="text" disabled="true"/></td></tr>
         </table>
-        <a href="index.jsp">Inicial</a>
     </body>
 </html>

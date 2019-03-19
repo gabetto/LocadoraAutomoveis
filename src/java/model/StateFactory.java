@@ -12,7 +12,7 @@ package model;
 public class StateFactory {
     public static CarroEstado create(String state) {
         CarroEstado actionObject = null;
-        String nomeClasse = "model." + state;
+        String nomeClasse = "model.CarroEstado" + state;
         Class classe = null;
         Object objeto = null;
         try {

@@ -12,6 +12,5 @@ and open the template in the editor.
   </head>
   <body>
      <%@ include file="master/menu.jsp" %>
-    <h1>Locadora de automoveis</h1>
   </body>
 </html>

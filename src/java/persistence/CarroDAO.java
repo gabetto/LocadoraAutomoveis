@@ -92,11 +92,6 @@ public class CarroDAO {
         try {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            //funciona no phpmyadmin mas aqui não ???
-            //select carro.*, modelo.*, marca.* from carro 
-            //INNER JOIN modelo ON carro.id_modelo = modelo.id 
-            //INNER JOIN categoria ON modelo.id_categoria = categoria.id 
-            //INNER JOIN marca ON modelo.id_marca = marca.id WHERE carro.placa = 'asd1234';
             ResultSet rs = st.executeQuery("select carro.*, modelo.*, marca.*, categoria.* from carro "
                     + "INNER JOIN modelo ON carro.id_modelo = modelo.id "
                     + "INNER JOIN categoria ON modelo.id_categoria = categoria.id "
@@ -124,7 +119,7 @@ public class CarroDAO {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
             st.execute("update carro set id_modelo = '" + carro.getModelo().getId()+ "', placa = '" + 
-                    carro.getPlaca() +"', estado = '" + carro.getEstado().toString() + " where id = " + 
+                    carro.getPlaca() +"', estado = '" + carro.getEstado().getClass().toString() + " where id = " + 
                     carro.getId() + ";");
 
         } catch (SQLException e) {

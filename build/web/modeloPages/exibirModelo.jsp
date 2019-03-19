@@ -7,11 +7,13 @@
         <title>Modelo</title>
     </head>
     <body>
-        <h1>Modelo lido com sucesso!</h1>
+        <%@ include file="../master/menu.jsp" %>
+        <h2>Modelo lido com sucesso!</h2>
         <table>
             <tr><td>Id: </td><td><input value="${modelo.id}" type="text" disabled="true"/></td></tr>
             <tr><td>Nome: </td><td><input value="${modelo.nome}" type="text" disabled="true"/></td></tr>
+            <tr><td>Marca: </td><td><input value="${modelo.marca.nome}" type="text" disabled="true"/></td></tr>
+
         </table>
-        <a href="index.jsp">Inicial</a>
     </body>
 </html>

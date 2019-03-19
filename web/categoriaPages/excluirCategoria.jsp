@@ -7,14 +7,14 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h2>APAGAR</h2>
+        <%@ include file="../master/menu.jsp" %>
+        <h2>Apagar</h2>
         <form action="../FrontController?action=ApagarCategoria" method="post">
             <table>
-                <tr><td>Entre com o nome da categoria</td>
+                <tr><td>Informe o nome da categoria</td>
                     <td><input type="text" name="textNome"/></td></tr> 
                 <tr><td> <input type="submit" value="Apagar"/></td></tr>
             </table>
         </form>
-          <a href="../index.jsp">Inicial</a>
     </body>
 </html>

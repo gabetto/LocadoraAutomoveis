@@ -26,5 +26,10 @@ public class CarroEstadoEmManutencao implements CarroEstado {
     public boolean paraManutencao(Carro carro) {
         return false;
     }
+    
+    @Override
+    public String toString(){
+        return "EmManutencao";
+    }
 
 }
