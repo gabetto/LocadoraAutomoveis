@@ -66,7 +66,7 @@ public class CarroDAO {
         try {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            ResultSet rs = st.executeQuery("select carro.*, modelo.*, marca.* from carro "
+            ResultSet rs = st.executeQuery("select carro.*, modelo.*, marca.*, categoria.* from carro "
                     + "INNER JOIN modelo ON carro.id_modelo = modelo.id "
                     + "INNER JOIN categoria ON modelo.id_categoria = categoria.id "
                     + "INNER JOIN marca ON modelo.id_marca = marca.id WHERE carro.id = " + id + ";");
@@ -97,7 +97,7 @@ public class CarroDAO {
             //INNER JOIN modelo ON carro.id_modelo = modelo.id 
             //INNER JOIN categoria ON modelo.id_categoria = categoria.id 
             //INNER JOIN marca ON modelo.id_marca = marca.id WHERE carro.placa = 'asd1234';
-            ResultSet rs = st.executeQuery("select carro.*, modelo.*, marca.* from carro "
+            ResultSet rs = st.executeQuery("select carro.*, modelo.*, marca.*, categoria.* from carro "
                     + "INNER JOIN modelo ON carro.id_modelo = modelo.id "
                     + "INNER JOIN categoria ON modelo.id_categoria = categoria.id "
                     + "INNER JOIN marca ON modelo.id_marca = marca.id WHERE carro.placa = '" + placa + "';");

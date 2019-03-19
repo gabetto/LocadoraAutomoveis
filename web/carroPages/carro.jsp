@@ -16,7 +16,7 @@
         <table class="tableCrud">
           <thead>
             <th>
-              Id:
+              Nome
             </th>
             <th>
               Placa:
@@ -28,7 +28,7 @@
           <tbody>
             <c:forEach items="${carros}" var="carro">
               <tr>
-                <td><c:out value="${carro.id}"/></td>
+                <td><c:out value="${carro.modelo.nome}"/></td>
                 <td><c:out value="${carro.placa}"/></td>
               </tr>
             </c:forEach>

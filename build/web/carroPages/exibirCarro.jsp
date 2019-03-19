@@ -10,7 +10,7 @@
         <h1>Carro lido com sucesso!</h1>
         <table>
             <tr><td>Id: </td><td><input value="${carro.id}" type="text" disabled="true"/></td></tr>
-            <tr><td>Nome: </td><td><input value="${carro.nome}" type="text" disabled="true"/></td></tr>
+            <tr><td>Nome: </td><td><input value="${carro.placa}" type="text" disabled="true"/></td></tr>
         </table>
         <a href="index.jsp">Inicial</a>
     </body>

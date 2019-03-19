@@ -11,28 +11,7 @@ and open the template in the editor.
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
+     <%@ include file="master/menu.jsp" %>
     <h1>Locadora de automoveis</h1>
-    <ul>
-      <li>
-        <form action="FrontController?action=PreparaMarca" method="post">
-          <input type="submit" value="Marca" />
-        </form>
-      </li>
-      <li>
-        <form action="FrontController?action=PreparaCategoria" method="post">
-          <input type="submit" value="Categoria" />
-        </form>
-      </li>
-      <li>
-        <form action="FrontController?action=PreparaModelo" method="post">
-          <input type="submit" value="Modelo" />
-        </form>
-      </li>
-      <li>
-          <form action="FrontController?action=PreparaCarro" method="post">
-            <input type="submit" value="Carro" />
-          </form>
-        </li>
-    </ul>
   </body>
 </html>
