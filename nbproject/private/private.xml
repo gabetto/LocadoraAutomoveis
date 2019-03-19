@@ -3,17 +3,41 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/action/LerCategoriaAction.java</file>
+            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/model/CarroEstadoDisponivel.java</file>
             <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/action/CadastroModeloAction.java</file>
-            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/action/LerModeloAction.java</file>
-            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/action/GravarModeloAction.java</file>
-            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/persistence/MarcaDAO.java</file>
-            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/controller/FrontController.java</file>
+            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/model/Carro.java</file>
+            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/action/GravarCategoriaAction.java</file>
+            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/model/CarroEstadoAlugado.java</file>
+            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/model/CarroEstadoEmManutencao.java</file>
             <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/model/Marca.java</file>
             <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/controller/ActionFactory.java</file>
-            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/persistence/ModeloDAO.java</file>
-            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/action/GravarCarroAction.java</file>
+            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/action/PreparaCategoriaAction.java</file>
+            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/persistence/CarroDAO.java</file>
+            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/action/GravarMarcaAction.java</file>
             <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/action/PreparaModeloAction.java</file>
             <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/persistence/CategoriaDAO.java</file>
+            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/action/LerCarroAction.java</file>
+            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/persistence/MarcaDAO.java</file>
+            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/model/CarroEstado.java</file>
+            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/persistence/ModeloDAO.java</file>
+            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/model/Modelo.java</file>
+            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/model/Categoria.java</file>
+            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/action/ApagarCategoriaAction.java</file>
+            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/action/LerMarcaAction.java</file>
+            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/action/LerModeloAction.java</file>
+            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/action/ApagarCarroAction.java</file>
+            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/action/EmManutencaoCarroAction.java</file>
+            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/controller/FrontController.java</file>
+            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/action/GravarCarroAction.java</file>
+            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/model/StateFactory.java</file>
+            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/action/PreparaMarcaAction.java</file>
+            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/action/GravarModeloAction.java</file>
+            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/action/CadastroCarroAction.java</file>
+            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/action/PreparaCarroAction.java</file>
+            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/action/ApagarModeloAction.java</file>
+            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/action/AlugarCarroAction.java</file>
+            <file>file:/E:/Repos/java/LocadoraAutomoveis/src/java/action/DisponilizarCarroAction.java</file>
         </group>
     </open-files>
 </project-private>

@@ -8,7 +8,11 @@
     </head>
     <body>
         <%@ include file="../master/menu.jsp" %>
-        <h1>Carro lido com sucesso!</h1>
+
+
+        <h1><c:if test="${mensagemEstado != null}">
+            ${mensagemEstado}
+        </c:if></h1>
         <table>
             <tr><td>Marca: </td><td><input value="${carro.modelo.marca.nome}" type="text" disabled="true"/></td></tr>
             <tr><td>Nome: </td><td><input value="${carro.modelo.nome}" type="text" disabled="true"/></td></tr>
@@ -16,14 +20,14 @@
             <tr><td>Estado: </td><td><input value="${carro.estado.toString()}" type="text" disabled="true"/></td></tr>
         </table>
 
-        <form action="FrontController?action=MudarEstadoCarro&e=1&p=${carro.placa}" method="post">
+        <form action="./FrontController?action=AlugarCarro&p=${carro.placa}" method="post">
             <input type="submit" value="Alugar" />
         </form>
-        <form action="FrontController?action=MudarEstadoCarro&e=2&p=${carro.placa}" method="post">
+        <form action="./FrontController?action=DisponilizarCarro&p=${carro.placa}" method="post">
             <input type="submit" value="Liberar" />
         </form>
-        <form action="FrontController?action=MudarEstadoCarro&e=3&p=${carro.placa}" method="post">
-            <input type="submit" value="Fazer manutenção" />
+        <form action="./FrontController?action=EmManutencaoCarro&p=${carro.placa}" method="post">
+            <input type="submit" value="Fazer manutencao" />
         </form>
     </body>
 </html>

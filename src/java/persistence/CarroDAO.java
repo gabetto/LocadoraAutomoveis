@@ -118,8 +118,9 @@ public class CarroDAO {
         try {
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            st.execute("update carro set id_modelo = '" + carro.getModelo().getId()+ "', placa = '" + 
-                    carro.getPlaca() +"', estado = '" + carro.getEstado().getClass().toString() + " where id = " + 
+           //update carro set id_modelo = carro.getModelo().getId(), placa = carro.getPlaca(), estado = carro.getEstado().toString() where id = carro.getId() ; 
+            st.execute("update carro set id_modelo = " + carro.getModelo().getId()+ ", placa = '" + 
+                    carro.getPlaca() +"', estado = '" + carro.getEstado().toString() + "' where id = " + 
                     carro.getId() + ";");
 
         } catch (SQLException e) {

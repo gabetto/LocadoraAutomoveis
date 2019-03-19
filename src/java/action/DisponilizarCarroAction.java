@@ -15,31 +15,21 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Carro;
-import model.CarroEstado;
-import model.StateFactory;
 import persistence.CarroDAO;
 
 /**
  *
- * @author Gabriel
+ * @author mathe
  */
-public class MudarEstadoCarroAction implements Action {
-
+public class DisponilizarCarroAction implements Action {
     public void execute(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         String placa = request.getParameter("p");
-        int estado = Integer.parseInt(request.getParameter("e"));
         boolean trocouEstado = false;
 
         try {
             Carro carro = CarroDAO.getInstance().getCarro(placa);
-            if (estado == 1) {
-                trocouEstado = carro.getEstado().alugar(carro);
-            } else if (estado == 2) {
-                trocouEstado = carro.getEstado().disponibilizar(carro);
-            } else if (estado == 3) {
-                trocouEstado = carro.getEstado().paraManutencao(carro);
-            }
+            trocouEstado = carro.getEstado().disponibilizar(carro);
             CarroDAO.getInstance().update(carro);
             if (trocouEstado) {
                 request.setAttribute("mensagemEstado", "O estado do veículo foi alterado");
@@ -47,7 +37,7 @@ public class MudarEstadoCarroAction implements Action {
                 request.setAttribute("mensagemEstado", "O estado do veículo não pode ser alterado");
             }
             request.setAttribute("carro", carro);
-            RequestDispatcher view = request.getRequestDispatcher("modeloPages/exibirCarro.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("carroPages/exibirCarro.jsp");
             view.forward(request, response);
         } catch (SQLException ex) {
             response.sendRedirect("erro.jsp");
@@ -58,5 +48,4 @@ public class MudarEstadoCarroAction implements Action {
             Logger.getLogger(LerModeloAction.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
 }
